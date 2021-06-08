@@ -387,7 +387,7 @@ class VMServer:
 		if self.closed:
 			raise VMError("The VM is closed")
 			
-		args = [self.command, VM_SERVER]
+		args = [self.command, '--inspect', VM_SERVER]
 		self.process = Popen(args, bufsize=0, stdin=PIPE, stdout=PIPE)
 		
 		def reader():
