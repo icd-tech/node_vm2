@@ -16,7 +16,7 @@ rl.on("line", line => {
 		err = _err;
 	}
 	if (err) {
-		result = {status: "error", error: err.message || err};
+		result = {status: "error", error: (err.message || err) + '\n' +  (error.stack || '')};
 	} else {
 		result = result || {};
 		result.status = "success";
@@ -30,7 +30,7 @@ rl.on("line", line => {
 		})
 		.catch(error => {
 			result.status = "error";
-			result.error = error.message || error;
+			result.error = (error.message || error) + '\n' +  (error.stack || '');
 			delete result.value;
 			console.log(JSON.stringify(result));
 		});
