@@ -1,19 +1,13 @@
 node_vm2
 ========
 
-.. image:: https://api.codacy.com/project/badge/Grade/fb30c7193b6b43cf818457e3ff23e60c
-   :target: https://www.codacy.com/app/eight04/node_vm2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eight04/node_vm2&amp;utm_campaign=Badge_Grade
-
 .. image:: https://readthedocs.org/projects/node-vm2/badge/?version=latest
    :target: http://node-vm2.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
    
-.. image:: https://travis-ci.org/eight04/node_vm2.svg?branch=master
-   :target: https://travis-ci.org/eight04/node_vm2
-   
-.. image:: https://david-dm.org/eight04/node_vm2/status.svg?path=node_vm2/vm-server
-   :target: https://david-dm.org/eight04/node_vm2?path=node_vm2/vm-server
-   :alt: dependencies Status
+.. image:: https://github.com/eight04/node_vm2/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/eight04/node_vm2/actions/workflows/test.yml
+   :alt: test
 
 A Python 3 to Node.js + vm2 binding, helps you execute JavaScript safely.
 
@@ -120,6 +114,33 @@ http://node-vm2.readthedocs.io/
 
 Changelog
 ---------
+
+- 0.4.5 (Sep 1, 2022)
+
+  - Update vm2 to 3.9.11.
+
+- 0.4.4 (Mar 14, 2022)
+
+  - Update vm2 to 3.9.9.
+
+- 0.4.3 (Feb 15, 2022)
+
+  - Update vm2 to 3.9.7.
+
+- 0.4.2 (Feb 9, 2022)
+
+  - Update vm2 to 3.9.6.
+
+  - Fix: filename is optional.
+
+-  0.4.1 (Oct 20, 2021)
+
+   -  Update vm2 to 3.9.5.
+
+-  0.4.0 (Sep 2, 2021)
+
+   -  Update vm2 to 3.9.3.
+   -  **Change: throw VMError when failed running node.**
 
 -  0.3.7 (Mar 23, 2020)
 

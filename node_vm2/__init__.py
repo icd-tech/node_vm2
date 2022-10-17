@@ -383,12 +383,19 @@ class VMServer:
 			
 			> {"id": 3, "action": "xxx"}
 			{"id": 3, "status": "error", "error": "Unknown action: xxx"}
+
+		A :class:`VMError` will be thrown if the node process cannot be spawned.
 		"""
 		if self.closed:
 			raise VMError("The VM is closed")
-			
+
 		args = [self.command, '--inspect', VM_SERVER]
-		self.process = Popen(args, bufsize=0, stdin=PIPE, stdout=PIPE)
+		try:
+			self.process = Popen(args, bufsize=0, stdin=PIPE, stdout=PIPE) # pylint: disable=consider-using-with
+		except FileNotFoundError as err:
+			raise VMError(f"Failed starting VM server. '{self.command}' is unavailable.") from err
+		except Exception as err:
+			raise VMError("Failed starting VM server") from err
 		
 		def reader():
 			for data in self.process.stdout:
