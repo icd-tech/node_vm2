@@ -367,12 +367,7 @@ class VMServer:
 		vm-server is a REPL server, which allows us to connect to it with
 		stdios. You can find the script at ``node_vm2/vm-server`` (`Github
 		<https://github.com/eight04/node_vm2/tree/master/node_vm2/vm-server>`__).
-		
-		There are 2 ways to specify ``node`` executable:
 
-			1. Add the directory of ``node`` to ``PATH`` env variable.
-			2. Set env variable ``NODE_EXECUTABLE`` to the path of the executable.
-		
 		Communication using JSON::
 		
 			> {"id": 1, "action": "create", "type": "VM"}
@@ -383,13 +378,17 @@ class VMServer:
 			
 			> {"id": 3, "action": "xxx"}
 			{"id": 3, "status": "error", "error": "Unknown action: xxx"}
-
+			
 		A :class:`VMError` will be thrown if the node process cannot be spawned.
 		"""
 		if self.closed:
 			raise VMError("The VM is closed")
 
-		args = [self.command, '--inspect', VM_SERVER]
+		if environ.get("DEBUGGER") == "True":
+			args = [self.command, '--inspect-brk', VM_SERVER]
+		else:
+			args = [self.command, VM_SERVER]
+
 		try:
 			self.process = Popen(args, bufsize=0, stdin=PIPE, stdout=PIPE) # pylint: disable=consider-using-with
 		except FileNotFoundError as err:
