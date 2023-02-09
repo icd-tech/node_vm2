@@ -81,4 +81,4 @@ class Main(TestCase):
 		result = eval("Object.freeze({foo: {}})")
 		self.assertEqual(result, {"foo": {}})
 			
-main()
+
